@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>NamespaceBECPQ</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>NamespaceBECPQ</shortDescription>
+        <value>BECPQ__</value>
+    </labels>
+    <labels>
+        <fullName>User_s_Manual_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>User&apos;s Manual URL</shortDescription>
+        <value>https://bluvium.atlassian.net/l/cp/T18TbGYN</value>
+    </labels>
+    <labels>
+        <fullName>Website_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Website URL</shortDescription>
+        <value>https://www.bluvium.com/</value>
+    </labels>
+</CustomLabels>
