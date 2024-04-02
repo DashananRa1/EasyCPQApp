@@ -1,0 +1,53 @@
+<apex:page standardController="SBQQ__Quote__c" extensions="GetSubscriptionAndAssets" action="{!toShowSubscriptionAndAssets}" lightningStylesheets="true">
+    <style>
+        td.pbTitle {
+            width: 100% !important;
+        }
+    </style>
+ 
+    <apex:form title="">  
+        <apex:pageBlock id="pb" title="Account: {!accName}">
+            <apex:outputText rendered="{!AND(subscriptionList.empty, assetList.empty)}">
+                <h1 style="font-size: 16px;">No subscription or assets found for this Account......!</h1>
+            </apex:outputText>
+            
+            <apex:outputText rendered="{!AND(NOT(subscriptionList.empty), assetList.empty)}">
+                <h1 style="font-size: 16px;">No Assets found for this Account......!</h1>
+            </apex:outputText>
+            
+            <apex:outputText rendered="{!AND(subscriptionList.empty, NOT(assetList.empty))}">
+                <h1 style="font-size: 16px;">No Subscriptions found for this Account......!</h1>
+            </apex:outputText>
+            
+            
+            <apex:pageBlockSection title="Subscriptions" rendered="{!NOT(subscriptionList.empty)}" columns="1">               
+                <apex:pageBlockTable var="subscription" value="{!subscriptionList}">
+                    <apex:column headerValue="Subscription #">
+                        <apex:outputLink value="/{!subscription.Id}" target="_blank">{!subscription.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!subscription.SBQQ__Quantity__c}" style="text-align: left"/> <!-- Replace Field1__c with the actual API name of the field -->
+                    <apex:column value="{!subscription.SBQQ__ListPrice__c}" style="text-align: left"/> <!-- Replace Field2__c with the actual API name of the field -->
+                    <apex:column value="{!subscription.SBQQ__Discount__c}" style="text-align: left"/> <!-- Replace Field3__c with the actual API name of the field -->
+                    <apex:column value="{!subscription.SBQQ__NetPrice__c}" style="text-align: left"/> <!-- Replace Field4__c with the actual API name of the field -->
+			        <apex:column value="{!subscription.SBQQ__StartDate__c}" style="text-align: left"/> <!-- Replace Field5__c with the actual API name of the field -->
+                    <apex:column value="{!subscription.SBQQ__EndDate__c}" style="text-align: left"/> <!-- Replace Field6__c with the actual API name of the field -->
+                  <!-- Add additional columns for the subscription fields you want to display -->
+                </apex:pageBlockTable>
+            </apex:pageBlockSection> 
+                        
+            <apex:pageBlockSection title="Assets" rendered="{!NOT(assetList.empty)}" columns="1">           
+                <apex:pageBlockTable var="asset" value="{!assetList}">                
+                    <apex:column headerValue="Asset Name">
+                        <apex:outputLink value="/{!asset.Id}" target="_blank">{!asset.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!asset.Quantity}" style="text-align: left"/> <!-- Replace Field1__c with the actual API name of the field -->
+                    <apex:column value="{!asset.SBQQ__ListPrice__c}" style="text-align: left"/> <!-- Replace Field2__c with the actual API name of the field -->
+                    <apex:column value="{!asset.SBQQ__Discount__c}" style="text-align: left"/> <!-- Replace Field3__c with the actual API name of the field -->
+                    <apex:column value="{!asset.Price}" style="text-align: left"/> <!-- Replace Field4__c with the actual API name of the field -->
+                  <!-- Add additional columns for the asset fields you want to display -->
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+<!-- Last modified by Nitin Bildani -->

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AmendOpportunity_AccountFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AmendOpportunity-Account Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AmendOpportunity_OriginalOppFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AmendOpportunity-Orig. Opp. Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AmendQuote_AccountFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AmendQuote-Account Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AmendQuote_OriginalOppFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AmendQuote-Orig. Opp. Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AmendQuote_OriginalQuoteFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>AmendQuote-Orig. Quote Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Auto_Select_Master_Contract__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Auto Select Master Contract</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Generate_New_Amendment_Opportunity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Generate New Amendment Opportunity</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Generate_New_Renewal_Opportunity__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Generate New Renewal Opportunity</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maintain_QuoteLine_Groups__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Maintain QuoteLine Groups</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maintain_QuoteLine_Groups_for_Amendment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Maintain QuoteLine Groups for Amendment</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Maintain_QuoteLine_Groups_for_renewal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Maintain QuoteLine Groups for renewal</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>New_Quote_Fields_Setup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>New Quote Fields Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Quote_Stage__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Quote Stage</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RenewalOpportunity_AccountFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>RenewalOpportunity-Account Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RenewalOpportunity_OriginalOppFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>RenewalOpportunity-Orig.Opp. Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RenewalQuote_AccountFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>RenewalQuote-Account Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RenewalQuote_OriginalOppFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>RenewalQuote-Orig. Opp. Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RenewalQuote_OriginalQuoteFieldSetup__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>RenewalQuote-Orig. Quote Field Setup</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>App Configuration</label>
+    <pluralLabel>App Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
