@@ -49,10 +49,10 @@ public with sharing class CreateQuoteLWC {
     SBQQ__Quote__c newQuote = new SBQQ__Quote__c();
     Opportunity oppData = new Opportunity();
     Account accData = new Account();
-    BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName(
+    App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName(
       'Default'
     );
-    String newQuoteFromOppFeildSetup = appConfig.BECPQ__New_Quote_Fields_Setup__c;
+    String newQuoteFromOppFeildSetup = appConfig.New_Quote_Fields_Setup__c;
     // Set to Store Fields from metadata
     Set<String> accountFieldSet = new Set<String>();
     Set<String> opportunityFieldSet = new Set<String>();
