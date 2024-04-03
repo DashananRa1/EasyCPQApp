@@ -20,21 +20,21 @@ public with sharing class EasyCpqUtils {
     **/
     public static List<Object> getRenewedQuoteFieldsSetup() {
         List<Object> result = new List<Object>();       
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (RenewalSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }        
         if(appConfig == null) {
             return new List<Object>();
         }      
-        if (appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c));
+        if (appConfig.RenewalQuote_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.RenewalQuote_OriginalOppFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.RenewalQuote_OriginalOppFieldSetup__c));
         }
-        if (appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c));
+        if (appConfig.RenewalQuote_OriginalQuoteFieldSetup__c != null && !String.isBlank(appConfig.RenewalQuote_OriginalQuoteFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.RenewalQuote_OriginalQuoteFieldSetup__c));
         }
-        if (appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c));
+        if (appConfig.RenewalQuote_AccountFieldSetup__c != null && !String.isBlank(appConfig.RenewalQuote_AccountFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.RenewalQuote_AccountFieldSetup__c));
         }          
         return result;
     }
@@ -52,11 +52,11 @@ public with sharing class EasyCpqUtils {
         if(appConfig == null) {
             return new List<Object>();
         }      
-        if (appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c));
+        if (appConfig.RenewalOpportunity_AccountFieldSetup__c != null && !String.isBlank(appConfig.RenewalOpportunity_AccountFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.RenewalOpportunity_AccountFieldSetup__c));
         }
-        if (appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c));
+        if (appConfig.RenewalOpportunity_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.RenewalOpportunity_OriginalOppFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.RenewalOpportunity_OriginalOppFieldSetup__c));
         }
         return result;
     }
@@ -69,7 +69,7 @@ public with sharing class EasyCpqUtils {
         Map<String, List<Object>> jsonDataMapForQuote = getJsonDataMapForQuoteForRenewal(jsonDataQuote);
         Map<String, List<Object>> jsonDataMapForOpp = getJsonDataMapForOppForRenewal(jsonDataOpp);
         // Update data in Custom metadta fro Renewal Quote And Renewal Opportunity Fields        
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (RenewalSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
@@ -78,37 +78,37 @@ public with sharing class EasyCpqUtils {
         }
         // for Quote Renewal Setting Fields
         if (jsonDataMapForQuote.get('OriginalOpportunity') != null) {
-            appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalOpportunity'));
+            appConfig.RenewalQuote_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalOpportunity'));
         }
         else {
-           appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__RenewalQuote_OriginalOppFieldSetup__c; 
+           appConfig.RenewalQuote_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').RenewalQuote_OriginalOppFieldSetup__c; 
         }
         if (jsonDataMapForQuote.get('Account') != null) {
-           appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('Account'));
+           appConfig.RenewalQuote_AccountFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('Account'));
         }
         else {
-         appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__RenewalQuote_AccountFieldSetup__c;   
+         appConfig.RenewalQuote_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').RenewalQuote_AccountFieldSetup__c;   
         }        
         if (jsonDataMapForQuote.get('OriginalQuote') != null) {
-            appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalQuote'));
+            appConfig.RenewalQuote_OriginalQuoteFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalQuote'));
         }
         else {
-            appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c;
+            appConfig.RenewalQuote_OriginalQuoteFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').RenewalQuote_OriginalQuoteFieldSetup__c;
         }
         // for Renewal Opportunity Setting Fields
         if (jsonDataMapForOpp.get('OriginalOpportunity') != null) {
-            appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('OriginalOpportunity'));
+            appConfig.RenewalOpportunity_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('OriginalOpportunity'));
         }
         else {
-        appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c;
+        appConfig.RenewalOpportunity_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').RenewalOpportunity_OriginalOppFieldSetup__c;
         }
         if (jsonDataMapForOpp.get('Account') != null) {
-           appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('Account'));
+           appConfig.RenewalOpportunity_AccountFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('Account'));
         }
         else {
-         appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__RenewalOpportunity_AccountFieldSetup__c;   
+         appConfig.RenewalOpportunity_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').RenewalOpportunity_AccountFieldSetup__c;   
         }        
-        return EasyCpqMdtMngr.upsertMetadata(new List<BECPQ__App_Configuration__mdt> { appConfig });  
+        return EasyCpqMdtMngr.upsertMetadata(new List<App_Configuration__mdt> { appConfig });  
     }
     public static Map<String, List<Object>> getJsonDataMapForQuoteForRenewal(String jsonDataQuote) {
         List<Object> jsonListForQuote = (List<Object>) JSON.deserializeUntyped(jsonDataQuote);
@@ -142,7 +142,7 @@ public with sharing class EasyCpqUtils {
     * @return: List<Object>
     **/
     public static List<Object> getAmendQuoteFieldsSetup() {           
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (AmendSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
@@ -150,14 +150,14 @@ public with sharing class EasyCpqUtils {
             return new List<Object>();
         } 
         List<Object> result = new List<Object>();
-        if (appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c));
+        if (appConfig.AmendQuote_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.AmendQuote_OriginalOppFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.AmendQuote_OriginalOppFieldSetup__c));
         }
-        if (appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c));
+        if (appConfig.AmendQuote_OriginalQuoteFieldSetup__c != null && !String.isBlank(appConfig.AmendQuote_OriginalQuoteFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.AmendQuote_OriginalQuoteFieldSetup__c));
         }
-        if (appConfig.BECPQ__AmendQuote_AccountFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__AmendQuote_AccountFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__AmendQuote_AccountFieldSetup__c));
+        if (appConfig.AmendQuote_AccountFieldSetup__c != null && !String.isBlank(appConfig.AmendQuote_AccountFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.AmendQuote_AccountFieldSetup__c));
         }              
         return result;
     }
@@ -167,7 +167,7 @@ public with sharing class EasyCpqUtils {
     * @return: List<Object>
     **/
     public static List<Object> getAmendOpportunityFieldsSetup() {               
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
 		if(Test.isRunningTest() && (AmendSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }        
@@ -175,11 +175,11 @@ public with sharing class EasyCpqUtils {
             return new List<Object>();
         }        
         List<Object> result = new List<Object>();
-        if (appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c));
+        if (appConfig.AmendOpportunity_AccountFieldSetup__c != null && !String.isBlank(appConfig.AmendOpportunity_AccountFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.AmendOpportunity_AccountFieldSetup__c));
         }
-        if (appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c)) {
-            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c));
+        if (appConfig.AmendOpportunity_OriginalOppFieldSetup__c != null && !String.isBlank(appConfig.AmendOpportunity_OriginalOppFieldSetup__c)) {
+            result.addAll((List<Object>) JSON.deserializeUntyped(appConfig.AmendOpportunity_OriginalOppFieldSetup__c));
         }
         return result;
     }
@@ -192,7 +192,7 @@ public with sharing class EasyCpqUtils {
         Map<String, List<Object>> jsonDataMapForQuote = getJsonDataMapForQuoteForAmend(jsonDataQuote);
         Map<String, List<Object>> jsonDataMapForOpp = getJsonDataMapForOppForAmend(jsonDataOpp);       
         // Update data in Custom metadta for Ammend Quote And Ammend OPP Feids        
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (AmendSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
@@ -201,37 +201,37 @@ public with sharing class EasyCpqUtils {
         }
         // for AmendQuote Setting Fields
         if (jsonDataMapForQuote.get('OriginalOpportunity') != null) {
-            appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalOpportunity'));
+            appConfig.AmendQuote_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalOpportunity'));
         }
         else{
-            appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__AmendQuote_OriginalOppFieldSetup__c;
+            appConfig.AmendQuote_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').AmendQuote_OriginalOppFieldSetup__c;
         }
         if (jsonDataMapForQuote.get('Account') != null) {
-           appConfig.BECPQ__AmendQuote_AccountFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('Account'));
+           appConfig.AmendQuote_AccountFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('Account'));
         }
         else{
-            appConfig.BECPQ__AmendQuote_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__AmendQuote_AccountFieldSetup__c;
+            appConfig.AmendQuote_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').AmendQuote_AccountFieldSetup__c;
         }
         if (jsonDataMapForQuote.get('OriginalQuote') != null) {
-            appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalQuote'));
+            appConfig.AmendQuote_OriginalQuoteFieldSetup__c = JSON.serialize(jsonDataMapForQuote.get('OriginalQuote'));
         }
         else{
-            appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__AmendQuote_OriginalQuoteFieldSetup__c;
+            appConfig.AmendQuote_OriginalQuoteFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').AmendQuote_OriginalQuoteFieldSetup__c;
         }
         // for AmmendOpportunity Setting Fields
         if (jsonDataMapForOpp.get('OriginalOpportunity') != null) {
-            appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('OriginalOpportunity'));
+            appConfig.AmendOpportunity_OriginalOppFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('OriginalOpportunity'));
         }
         else{
-            appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__AmendOpportunity_OriginalOppFieldSetup__c;
+            appConfig.AmendOpportunity_OriginalOppFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').AmendOpportunity_OriginalOppFieldSetup__c;
         }
         if (jsonDataMapForOpp.get('Account') != null) {
-           appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('Account'));
+           appConfig.AmendOpportunity_AccountFieldSetup__c = JSON.serialize(jsonDataMapForOpp.get('Account'));
         }
         else{
-            appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').BECPQ__AmendOpportunity_AccountFieldSetup__c;
+            appConfig.AmendOpportunity_AccountFieldSetup__c = EasyCpqQueries.getAppConfigByRecordName('Default').AmendOpportunity_AccountFieldSetup__c;
         }        
-        return EasyCpqMdtMngr.upsertMetadata(new List<BECPQ__App_Configuration__mdt> { appConfig });  
+        return EasyCpqMdtMngr.upsertMetadata(new List<App_Configuration__mdt> { appConfig });  
     }
     public static Map<String, List<Object>> getJsonDataMapForQuoteForAmend(String jsonDataQuote) {
         //for Ammed Quote Setting Data       
@@ -267,14 +267,14 @@ public with sharing class EasyCpqUtils {
     * @return: List<Object>
     **/
     public static List<Object> getNewQuoteFieldsSetup() {        
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (NewQuoteSettingControllerTest.nullCheck ||EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
         if(appConfig == null) {
             return new List<Object>();
         }
-        String value = appConfig.BECPQ__New_Quote_Fields_Setup__c;
+        String value = appConfig.New_Quote_Fields_Setup__c;
         if( String.isBlank(value) ) {
             return new List<Object>();
         }
@@ -286,15 +286,15 @@ public with sharing class EasyCpqUtils {
     * @return: List<Object>
     **/
     public static String setNewQuoteFieldsSetup(String jsonData) {
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (NewQuoteSettingControllerTest.nullCheck ||EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
         if(appConfig == null) {
            return null; 
         }
-        appConfig.BECPQ__New_Quote_Fields_Setup__c = jsonData;
-        return EasyCpqMdtMngr.upsertMetadata(new List<BECPQ__App_Configuration__mdt> { appConfig });
+        appConfig.New_Quote_Fields_Setup__c = jsonData;
+        return EasyCpqMdtMngr.upsertMetadata(new List<App_Configuration__mdt> { appConfig });
     }
     
     /**
@@ -302,7 +302,7 @@ public with sharing class EasyCpqUtils {
     * @author: Roshan Jambhule - Bluvium | 30-06-2023
     * @return: App_Configuration__mdt
     **/
-    public static BECPQ__App_Configuration__mdt getAdditionalSettingFieldsSetup() {
+    public static App_Configuration__mdt getAdditionalSettingFieldsSetup() {
         return EasyCpqQueries.getAppConfigByRecordName('Default');      
     }
     /**
@@ -314,22 +314,22 @@ public with sharing class EasyCpqUtils {
     @AuraEnabled
     public static String setAdditionalSettingFieldsSetup(String jsonData) {        
         Map<String, Object> jsonMap = (Map<String, Object>) JSON.deserializeUntyped(jsonData);        
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         if(Test.isRunningTest() && (CoreSettingControllerTest.nullCheck || EasyCpqUtilsTest.nullCheck)){
             appConfig = null;
         }
         if(appConfig == null) {
            return null; 
         }
-        appConfig.BECPQ__Auto_Select_Master_Contract__c = (Boolean) jsonMap.get('isAutoSelectMasterContract'); 
-        appConfig.BECPQ__Generate_New_Amendment_Opportunity__c = (Boolean) jsonMap.get('isGenerateNewAmendmentOpportunity'); 
-        appConfig.BECPQ__Generate_New_Renewal_Opportunity__c = (Boolean) jsonMap.get('isGenerateNewRenewalOpportunity');
-        appConfig.BECPQ__Maintain_QuoteLine_Groups__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroup');
-        appConfig.BECPQ__Maintain_QuoteLine_Groups_for_Amendment__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroupForAmendment');
-        appConfig.BECPQ__Maintain_QuoteLine_Groups_for_renewal__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroupForRenewal');
+        appConfig.Auto_Select_Master_Contract__c = (Boolean) jsonMap.get('isAutoSelectMasterContract'); 
+        appConfig.Generate_New_Amendment_Opportunity__c = (Boolean) jsonMap.get('isGenerateNewAmendmentOpportunity'); 
+        appConfig.Generate_New_Renewal_Opportunity__c = (Boolean) jsonMap.get('isGenerateNewRenewalOpportunity');
+        appConfig.Maintain_QuoteLine_Groups__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroup');
+        appConfig.Maintain_QuoteLine_Groups_for_Amendment__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroupForAmendment');
+        appConfig.Maintain_QuoteLine_Groups_for_renewal__c = (Boolean) jsonMap.get('isMaintainQuoteLineGroupForRenewal');
         String quoteStage = (String) jsonMap.get('quoteStage');
-        appConfig.BECPQ__Quote_Stage__c = quoteStage;
-        return EasyCpqMdtMngr.upsertMetadata(new List<BECPQ__App_Configuration__mdt> { appConfig });
+        appConfig.Quote_Stage__c = quoteStage;
+        return EasyCpqMdtMngr.upsertMetadata(new List<App_Configuration__mdt> { appConfig });
     }   
     /**
     * @description: Method to dynamically get the fields from a fieldset for an object 
