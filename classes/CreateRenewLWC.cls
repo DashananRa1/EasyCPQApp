@@ -62,8 +62,8 @@ public with sharing class CreateRenewLWC {
         if(!CRUD_FLS_CheckUtility.checkUpdateAccess(new set<String>{'SBQQ__RenewalForecast__c','SBQQ__RenewalQuoted__c','SBQQ__RenewalOpportunity__c','SBQQ__Opportunity__c','SBQQ__Quote__c', 'AccountId'}, Fields)){
             throw  new AuraHandledException('Permission update missing for contract fields.');
         }
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
-        Boolean newRenewalOpp = appConfig.BECPQ__Generate_New_Renewal_Opportunity__c;
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        Boolean newRenewalOpp = appConfig.Generate_New_Renewal_Opportunity__c;
         Integer contractCount = [SELECT COUNT() FROM Contract WHERE SBQQ__Opportunity__c= :oppId  WITH SECURITY_ENFORCED];
         if(contractCount>0 && !newRenewalOpp){                           
             return lstContractUpdate;
@@ -105,9 +105,9 @@ public with sharing class CreateRenewLWC {
         context.returnOnlyQuoteId =true;
         String quoteJSON;
         try {
-            BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
-            Boolean newRenewalOpp = appConfig.BECPQ__Generate_New_Renewal_Opportunity__c;
-            Boolean mainQlGroup = appConfig.BECPQ__Maintain_QuoteLine_Groups_for_renewal__c;      
+            App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+            Boolean newRenewalOpp = appConfig.Generate_New_Renewal_Opportunity__c;
+            Boolean mainQlGroup = appConfig.Maintain_QuoteLine_Groups_for_renewal__c;      
             Integer contractCount = [SELECT COUNT() FROM Contract WHERE SBQQ__Opportunity__c= :opportunityId  WITH SECURITY_ENFORCED];               
             if(contractCount>0 && !newRenewalOpp){                              
                 throw  new AuraHandledException('The primary quote cannot be changed for the opportunity because an order has been created from the quote.');
@@ -121,11 +121,11 @@ public with sharing class CreateRenewLWC {
             quoteId =  (String)quoteJSONMap.get('Id');    
             renewalQuote = [SELECT ID, NAME, SBQQ__Opportunity2__c,SBQQ__PriceBook__c, SBQQ__SubscriptionTerm__c FROM SBQQ__Quote__c WHERE ID =: quoteId WITH SECURITY_ENFORCED LIMIT 1];
             renewalOpportunity = [SELECT ID, NAME FROM Opportunity WHERE ID =: renewalQuote.SBQQ__Opportunity2__c WITH SECURITY_ENFORCED LIMIT 1];            
-            string opportunityFields = appConfig.BECPQ__RenewalQuote_OriginalOppFieldSetup__c;
-            string accountFields = appConfig.BECPQ__RenewalQuote_AccountFieldSetup__c;
-            string originalQuoetFields = appConfig.BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c;            
-            string originalOppToRenewalOppFieldsMapping = appConfig.BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c;
-            string accountToRenewalOpportunityFieldsMapping = appConfig.BECPQ__RenewalOpportunity_AccountFieldSetup__c;           
+            string opportunityFields = appConfig.RenewalQuote_OriginalOppFieldSetup__c;
+            string accountFields = appConfig.RenewalQuote_AccountFieldSetup__c;
+            string originalQuoetFields = appConfig.RenewalQuote_OriginalQuoteFieldSetup__c;            
+            string originalOppToRenewalOppFieldsMapping = appConfig.RenewalOpportunity_OriginalOppFieldSetup__c;
+            string accountToRenewalOpportunityFieldsMapping = appConfig.RenewalOpportunity_AccountFieldSetup__c;           
             set<string> originalOpportunityFieldSet = new set<string>();
             set<string> accountFieldSet = new set<string>();
             set<string> originlQuoteFieldSet= new set<string>();           
@@ -262,7 +262,7 @@ public with sharing class CreateRenewLWC {
                 }
             if(Test.isRunningTest()){
                 IF(newRenewalOpp){
-                    appConfig.BECPQ__Generate_New_Renewal_Opportunity__c = false;
+                    appConfig.Generate_New_Renewal_Opportunity__c = false;
                 } 
             }
             if(!newRenewalOpp){ 
@@ -336,7 +336,7 @@ public with sharing class CreateRenewLWC {
         }
     }  
     @AuraEnabled(cacheable=true) 
-    public static BECPQ__App_Configuration__mdt getCustomMetadata(){
+    public static App_Configuration__mdt getCustomMetadata(){
         return EasyCpqQueries.getAppConfigByRecordName('Default');
     }
 }
