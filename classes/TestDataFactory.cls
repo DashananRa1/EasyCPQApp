@@ -247,15 +247,15 @@ public with sharing class TestDataFactory {
      * and sets the Choose_Object__c to 'Order'.
      * The record is not inserted into the database,
      */
-    public static BECPQ__App_Configuration__mdt getCustomMetadataRecord() {        
-        BECPQ__App_Configuration__mdt appConfig = new BECPQ__App_Configuration__mdt(); 
+    public static App_Configuration__mdt getCustomMetadataRecord() {        
+        App_Configuration__mdt appConfig = new App_Configuration__mdt(); 
         appConfig.NamespacePrefix = 'Default';
         appConfig.DeveloperName = 'Default';
-        appConfig.BECPQ__Auto_Select_Master_Contract__c = true;
-        appConfig.BECPQ__Generate_New_Amendment_Opportunity__c = true;
-        appConfig.BECPQ__Generate_New_Renewal_Opportunity__c = true;
-        appConfig.BECPQ__Maintain_QuoteLine_Groups__c = true;
-        appConfig.BECPQ__Quote_Stage__c = 'Approved';
+        appConfig.Auto_Select_Master_Contract__c = true;
+        appConfig.Generate_New_Amendment_Opportunity__c = true;
+        appConfig.Generate_New_Renewal_Opportunity__c = true;
+        appConfig.Maintain_QuoteLine_Groups__c = true;
+        appConfig.Quote_Stage__c = 'Approved';
         return appConfig;
     } 
     /**
@@ -263,15 +263,15 @@ public with sharing class TestDataFactory {
      * and sets the Choose_Object__c to 'Opportunity'.
      * The record is not inserted into the database,
      */
-    public static BECPQ__App_Configuration__mdt getCustomMetadataRecordForOppTrigger() {        
-        BECPQ__App_Configuration__mdt appConfig = new BECPQ__App_Configuration__mdt(); 
+    public static App_Configuration__mdt getCustomMetadataRecordForOppTrigger() {        
+        App_Configuration__mdt appConfig = new App_Configuration__mdt(); 
         appConfig.NamespacePrefix = 'Default';
         appConfig.DeveloperName = 'Default';
-        appConfig.BECPQ__Auto_Select_Master_Contract__c = true;
-        appConfig.BECPQ__Generate_New_Amendment_Opportunity__c = true;
-        appConfig.BECPQ__Generate_New_Renewal_Opportunity__c = true;
-        appConfig.BECPQ__Maintain_QuoteLine_Groups__c = true;
-        appConfig.BECPQ__Quote_Stage__c = 'Approved';
+        appConfig.Auto_Select_Master_Contract__c = true;
+        appConfig.Generate_New_Amendment_Opportunity__c = true;
+        appConfig.Generate_New_Renewal_Opportunity__c = true;
+        appConfig.Maintain_QuoteLine_Groups__c = true;
+        appConfig.Quote_Stage__c = 'Approved';
         return appConfig;
     }
     /**
@@ -279,24 +279,22 @@ public with sharing class TestDataFactory {
      * class.
      * The record is not inserted into the database,
     */
-    public static BECPQ__App_Configuration__mdt createAppConfigRecord() {
-        BECPQ__App_Configuration__mdt appConfig = new BECPQ__App_Configuration__mdt(
+    public static App_Configuration__mdt createAppConfigRecord() {
+        App_Configuration__mdt appConfig = new App_Configuration__mdt(
             DeveloperName = 'Default',
-            BECPQ__Auto_Select_Master_Contract__c = true,
-            BECPQ__Generate_New_Amendment_Opportunity__c = true,
-            BECPQ__Generate_New_Renewal_Opportunity__c = true,
-            BECPQ__Maintain_QuoteLine_Groups__c = true,
-            BECPQ__Quote_Stage__c = 'Approved');
+            Auto_Select_Master_Contract__c = true,
+            Generate_New_Amendment_Opportunity__c = true,
+            Generate_New_Renewal_Opportunity__c = true,
+            Maintain_QuoteLine_Groups__c = true);
         return appConfig;
     }
-    public static BECPQ__App_Configuration__mdt getAppConfigRecord(String developerName) {
+    public static App_Configuration__mdt getAppConfigRecord(String developerName) {
         return [SELECT Id, DeveloperName, MasterLabel,
-                BECPQ__Auto_Select_Master_Contract__c ,
-                BECPQ__Generate_New_Amendment_Opportunity__c ,
-                BECPQ__Generate_New_Renewal_Opportunity__c ,
-                BECPQ__Maintain_QuoteLine_Groups__c,
-                BECPQ__Quote_Stage__c  
-                FROM BECPQ__App_Configuration__mdt
+                Auto_Select_Master_Contract__c ,
+                Generate_New_Amendment_Opportunity__c ,
+                Generate_New_Renewal_Opportunity__c ,
+                Maintain_QuoteLine_Groups__c  
+                FROM App_Configuration__mdt
                 WHERE DeveloperName = :developerName WITH SECURITY_ENFORCED LIMIT 1];
     }
     public static Map<String, Object> getValidJsonDataForQuote() {
