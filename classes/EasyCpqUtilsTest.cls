@@ -246,17 +246,17 @@ public static boolean nullCheck = false;
     private static void getNewQuoteFieldsSetupNullCheckTest(){
         Test.startTest();
         nullCheck = true;
-        BECPQ__App_Configuration__mdt appConfig = new BECPQ__App_Configuration__mdt();
+        App_Configuration__mdt appConfig = new App_Configuration__mdt();
         List<Object> data = EasyCpqUtils.getNewQuoteFieldsSetup();
         Test.stopTest();
         System.assertEquals(0, data.size(),'Expected size of 0');
     }
     @isTest
     private static void getNewQuoteFieldsSetupIsBlankTest(){
-        BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+        App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
         Test.startTest();
         nullCheck = true;
-        appConfig.BECPQ__New_Quote_Fields_Setup__c = '';
+        appConfig.New_Quote_Fields_Setup__c = '';
         EasyCpqQueries.getAppConfigByRecordName('Default');
         List<Object> data = EasyCpqUtils.getNewQuoteFieldsSetup();
         Test.stopTest(); 
@@ -310,9 +310,9 @@ public static boolean nullCheck = false;
     @isTest
     private static void getAdditionalSettingFieldsSetupTest(){
        // Positive Test: Test when App_Configuration__mdt record exists
-        BECPQ__App_Configuration__mdt appConfig = TestDataFactory.getCustomMetadataRecord();
+        App_Configuration__mdt appConfig = TestDataFactory.getCustomMetadataRecord();
         Test.startTest();
-        BECPQ__App_Configuration__mdt result = EasyCpqUtils.getAdditionalSettingFieldsSetup();
+        App_Configuration__mdt result = EasyCpqUtils.getAdditionalSettingFieldsSetup();
         Test.stopTest();
         //System.assertEquals(appConfig.Auto_Select_Master_Contract__c, result.Auto_Select_Master_Contract__c,'');
         System.assertEquals(true, true,'');
