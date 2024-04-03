@@ -22,12 +22,12 @@ public class EasyCpqMdtMngrTest {
   @isTest
   public static void upsertMetadataTest() {
     Test.startTest();
-    BECPQ__App_Configuration__mdt appConfigMdt = TestDataFactory.getAppConfigRecord(
+    App_Configuration__mdt appConfigMdt = TestDataFactory.getAppConfigRecord(
       'Default'
     );
     String jobId = EasyCpqMdtMngr.upsertMetadata(
-      new List<BECPQ__App_Configuration__mdt>{
-        new BECPQ__App_Configuration__mdt(
+      new List<App_Configuration__mdt>{
+        new App_Configuration__mdt(
           Id = appConfigMdt.Id,
           DeveloperName = appConfigMdt.DeveloperName,
           MasterLabel = appConfigMdt.MasterLabel
