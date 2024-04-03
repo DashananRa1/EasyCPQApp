@@ -66,7 +66,7 @@ public class EasyCpqQueriesTest {
   @isTest
   static void testGetAppConfigByRecordName() {
     Test.startTest();
-    BECPQ__App_Configuration__mdt mtd = EasyCpqQueries.getAppConfigByRecordName(
+    App_Configuration__mdt mtd = EasyCpqQueries.getAppConfigByRecordName(
       'Default'
     );
     Test.stopTest();
