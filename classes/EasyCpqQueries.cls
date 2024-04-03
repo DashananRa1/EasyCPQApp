@@ -22,10 +22,10 @@ public with sharing class EasyCpqQueries {
    * @return: App_Configuration__mdt
    **/
   @AuraEnabled(cacheable=true)
-  public static BECPQ__App_Configuration__mdt getAppConfigByRecordName(
+  public static App_Configuration__mdt getAppConfigByRecordName(
     String recordName
   ) {
-    List<BECPQ__App_Configuration__mdt> appCon = [
+    List<App_Configuration__mdt> appCon = [
       SELECT
         Id,
         New_Quote_Fields_Setup__c,
