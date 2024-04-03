@@ -103,16 +103,6 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
-        <fullName>Quote_Stage__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>SubscriberControlled</fieldManageability>
-        <label>Quote Stage</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>RenewalOpportunity_AccountFieldSetup__c</fullName>
         <externalId>false</externalId>
         <fieldManageability>SubscriberControlled</fieldManageability>
@@ -157,7 +147,4 @@
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
-    <label>App Configuration</label>
-    <pluralLabel>App Configurations</pluralLabel>
-    <visibility>Public</visibility>
 </CustomObject>
