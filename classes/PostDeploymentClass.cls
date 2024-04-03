@@ -29,7 +29,7 @@ public class PostDeploymentClass implements InstallHandler {
         SBQQ__Page__c = 'Quote Line Editor',
         SBQQ__URLTarget__c = 'Popup',
         SBQQ__Type__c = 'Button',
-        SBQQ__URL__c = '/apex/BECPQ__SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
+        SBQQ__URL__c = '/apex/SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
       );
       insert action;
       User u = [SELECT Id, Email FROM User WHERE Id = :context.installerID()];
@@ -56,7 +56,7 @@ public class PostDeploymentClass implements InstallHandler {
         SBQQ__Page__c = 'Quote Line Editor',
         SBQQ__URLTarget__c = 'Popup',
         SBQQ__Type__c = 'Button',
-        SBQQ__URL__c = '/apex/BECPQ__SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
+        SBQQ__URL__c = '/apex/SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
       );
       insert action;
     }
@@ -74,7 +74,7 @@ public class PostDeploymentClass implements InstallHandler {
         SBQQ__Page__c = 'Quote Line Editor',
         SBQQ__URLTarget__c = 'Popup',
         SBQQ__Type__c = 'Button',
-        SBQQ__URL__c = '/apex/BECPQ__SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
+        SBQQ__URL__c = '/apex/SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
       );
       insert action;
     }
@@ -92,7 +92,7 @@ public class PostDeploymentClass implements InstallHandler {
         SBQQ__Page__c = 'Quote Line Editor',
         SBQQ__URLTarget__c = 'Popup',
         SBQQ__Type__c = 'Button',
-        SBQQ__URL__c = '/apex/BECPQ__SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
+        SBQQ__URL__c = '/apex/SubscriptionAndAsset?Id={!SBQQ__Quote__c.Id}'
       );
       insert action;
     }
