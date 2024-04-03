@@ -104,7 +104,7 @@ public class CreateRenewLWCTest {
     @isTest
     static void testgetCustomMetadata() {        
         test.startTest();
-        BECPQ__App_Configuration__mdt metadata = CreateRenewLWC.getCustomMetadata();
+        App_Configuration__mdt metadata = CreateRenewLWC.getCustomMetadata();
         test.stopTest();        
         System.assertNotEquals(null, metadata, 'Custom metadata should not be null');        
     }
