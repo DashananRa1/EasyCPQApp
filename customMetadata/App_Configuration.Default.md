@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>AmendQuote_OriginalOppFieldSetup__c</field>
-        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;CloseDate&quot;,&quot;sourcefield&quot;:&quot;SBQQ__ExpirationDate__c&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
+        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;Description&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Introduction__c&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
     </values>
     <values>
         <field>AmendQuote_OriginalQuoteFieldSetup__c</field>
-        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;1&quot;},{&quot;targetfield&quot;:&quot;SBQQ__Status__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Status__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;2&quot;}]</value>
+        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
     </values>
     <values>
         <field>Auto_Select_Master_Contract__c</field>
@@ -28,11 +28,11 @@
     </values>
     <values>
         <field>Generate_New_Amendment_Opportunity__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Generate_New_Renewal_Opportunity__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>Maintain_QuoteLine_Groups__c</field>
@@ -60,7 +60,7 @@
     </values>
     <values>
         <field>RenewalOpportunity_OriginalOppFieldSetup__c</field>
-        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;LeadSource&quot;,&quot;sourcefield&quot;:&quot;LeadSource&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
+        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;LeadSource&quot;,&quot;sourcefield&quot;:&quot;LeadSource&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;},{&quot;targetfield&quot;:&quot;StageName&quot;,&quot;sourcefield&quot;:&quot;StageName&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;2&quot;}]</value>
     </values>
     <values>
         <field>RenewalQuote_AccountFieldSetup__c</field>
@@ -68,10 +68,10 @@
     </values>
     <values>
         <field>RenewalQuote_OriginalOppFieldSetup__c</field>
-        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;Description&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
+        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;Description&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Introduction__c&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
     </values>
     <values>
         <field>RenewalQuote_OriginalQuoteFieldSetup__c</field>
-        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Introduction__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;1&quot;}]</value>
+        <value xsi:type="xsd:string">[{&quot;targetfield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;1&quot;},{&quot;targetfield&quot;:&quot;SBQQ__Status__c&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Status__c&quot;,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;index&quot;:&quot;2&quot;}]</value>
     </values>
 </CustomMetadata>

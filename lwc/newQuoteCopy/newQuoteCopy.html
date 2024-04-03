@@ -1,0 +1,365 @@
+<!---
+  @description       : newQuoteCopy Component is  used to Mapping the Fields of Account,Opportunity and Quote
+                     from UI to Custom MetaData to get Populated on New Quote
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Ankita Varma - Tech Assistant
+  @last modified on  : 02-22-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <template lwc:if={showModal}>
+    <div lwc:if={showSpinner}>
+      <lightning-spinner
+        alternative-text="Loading..."
+        variant="brand"
+      ></lightning-spinner>
+    </div>
+    <lightning-tabset variant="scoped" lwc:ref="myDiv">
+      <lightning-tab label="Account" icon-name="standard:account">
+        <section>
+          <div>
+            <div lwc:if={accountFields}>
+              <table
+                class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+              >
+                <thead>
+                  <tr class="slds-text-title_caps slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Sr. No</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">New Quote Field</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">
+                        Selected Account Object Field
+                      </div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={accountFields} for:item="fld">
+                    <tr key={fld.index} class="slds-hint-parent">
+                      <td>{fld.index}</td>
+                      <td>
+                        <lightning-combobox
+                          variant="label-hidden"
+                          data-id="comboBox"
+                          data-field-index={fld.index}
+                          data-field-type={fld.datatype}
+                          data-field-rel="source"
+                          data-object-name="Account"
+                          value={fld.sourcefield}
+                          placeholder="Select a Quote Field"
+                          options={quoteFieldData}
+                          onchange={handleChangeQuote}
+                        ></lightning-combobox>
+                      </td>
+                      <td>
+                        <lightning-combobox
+                          variant="label-hidden"
+                          data-id="comboBox"
+                          data-field-index={fld.index}
+                          data-field-rel="target"
+                          data-object-name="Account"
+                          value={fld.targetfield}
+                          placeholder="Select a Account Field"
+                          options={accountFieldData}
+                          onchange={handleChangeQuote}
+                        ></lightning-combobox>
+                      </td>
+                      <td>
+                        <a href="#">
+                          <lightning-icon
+                            icon-name="utility:delete"
+                            size="small"
+                            alternative-text="Delete"
+                            title="Remove field"
+                            variant="error"
+                            class="delete-icon"
+                            onclick={handleRemoveFieldForAccount}
+                            data-field-index={fld.index}
+                            data-object-name="Account"
+                          ></lightning-icon>
+                          <span class="slds-assistive-text">Delete</span>
+                        </a>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <lightning-button
+                label="Add New Field"
+                title="Click to add new field"
+                icon-name="utility:add"
+                onclick={handleNewFieldForAccount}
+              ></lightning-button>
+            </div>
+          </div>
+        </section>
+      </lightning-tab>
+
+      <lightning-tab label="Opportunity" icon-name="standard:opportunity">
+        <section>
+          <div>
+            <div lwc:if={originalOpportunityField}>
+              <table
+                class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+              >
+                <thead>
+                  <tr class="slds-text-title_caps slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Sr. No</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">New Quote Field</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">
+                        Selected Opportunity Object Field
+                      </div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={originalOpportunityField} for:item="fld">
+                    <tr key={fld.index} class="slds-hint-parent">
+                      <td>{fld.index}</td>
+                      <td>
+                        <lightning-combobox
+                          variant="label-hidden"
+                          data-id="comboBox"
+                          data-field-index={fld.index}
+                          data-field-rel="source"
+                          data-field-datatype={fld.dataType}
+                          data-object-name="OriginalOpportunity"
+                          value={fld.sourcefield}
+                          placeholder="Select a Quote Field"
+                          options={quoteFieldData}
+                          onchange={handleChangeQuote}
+                        ></lightning-combobox>
+                      </td>
+                      <td>
+                        <lightning-combobox
+                          variant="label-hidden"
+                          data-id="comboBox"
+                          data-field-index={fld.index}
+                          data-object-name="OriginalOpportunity"
+                          value={fld.targetfield}
+                          data-field-rel="target"
+                          placeholder="Select a Opportunity Field"
+                          options={oppFieldData}
+                          onchange={handleChangeQuote}
+                        ></lightning-combobox>
+                      </td>
+                      <td>
+                        <a href="#">
+                          <lightning-icon
+                            icon-name="utility:delete"
+                            size="small"
+                            alternative-text="Delete"
+                            title="Remove field"
+                            class="delete-icon"
+                            onclick={handleRemoveFieldForOpportunity}
+                            data-field-index={fld.index}
+                            data-object-name="OriginalOpportunity"
+                            variant="error"
+                          ></lightning-icon>
+                          <span class="slds-assistive-text">Delete</span>
+                        </a>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <lightning-button
+                label="Add New Field"
+                title="Click to add new field"
+                data-object-name="OriginalOpportunity"
+                icon-name="utility:add"
+                onclick={handleNewFieldForOpportunity}
+              ></lightning-button>
+            </div>
+          </div>
+        </section>
+      </lightning-tab>
+
+      <lightning-tab label="New Quote" icon-name="standard:quotes">
+        <section>
+          <div lwc:if={originalQuoteFields}>
+            <lightning-record-edit-form object-api-name="SBQQ__Quote__c">
+              <table
+                class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+              >
+                <thead>
+                  <tr class="slds-text-title_caps slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Sr. No</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">New Quote Field</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Selected value</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate">Actions</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={originalQuoteFields} for:item="fld">
+                    <tr key={fld.index} class="slds-hint-parent">
+                      <td>{fld.index}</td>
+                      <td>
+                        <lightning-combobox
+                          variant="label-hidden"
+                          data-id="comboBox"
+                          data-field-index={fld.index}
+                          data-field-type={fld.datatype}
+                          data-field-rel="source"
+                          data-field-api="fld.label"
+                          data-object-name="OriginalQuote"
+                          value={fld.sourcefield}
+                          placeholder="Select a Quote Field"
+                          options={quoteFieldData}
+                          onchange={handleChangeQuote}
+                        ></lightning-combobox>
+                      </td>
+                      <td>
+                        <label>{fld.label}</label><br />
+                        <lightning-input-field
+                          variant="label-hidden"
+                          data-id="inputField"
+                          data-field-index={fld.index}
+                          data-field-type={fld.datatype}
+                          data-field-rel="target"
+                          data-object-name="OriginalQuote"
+                          field-name={fld.sourcefield}
+                          value={fld.targetfield}
+                        >
+                        </lightning-input-field>
+                      </td>
+                      <td>
+                        <a href="#">
+                          <lightning-icon
+                            icon-name="utility:delete"
+                            size="small"
+                            alternative-text="Delete"
+                            title="Remove field"
+                            variant="error"
+                            onclick={handleRemoveFieldForQuote}
+                            data-field-index={fld.index}
+                            data-object-name="OriginalQuote"
+                          ></lightning-icon>
+                          <span class="slds-assistive-text">Delete</span>
+                        </a>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </lightning-record-edit-form>
+
+            <div>
+              <lightning-button
+                label="Add New Field"
+                title="Click to add new field"
+                icon-name="utility:add"
+                onclick={handleNewFieldForQuote}
+              ></lightning-button>
+            </div>
+          </div>
+        </section>
+      </lightning-tab>
+    </lightning-tabset>
+
+    <div class="slds-p-top_medium">
+      <footer class="slds-modal__footer">
+        <div class="slds-align_absolute-right">
+          <div
+            class="slds-is-relative slds-col slds-size_5-of-12 slds-float_right"
+          >
+            <section
+              if:true={hasError}
+              aria-describedby="dialog-body-id-114"
+              aria-labelledby="dialog-heading-id-1"
+              class="slds-popover slds-popover_error slds-nubbin_bottom additional"
+              role="dialog"
+            >
+              <button
+                onclick={closeErrorPopup}
+                class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close slds-button_icon-inverse"
+                title="Close dialog"
+              >
+                <lightning-icon
+                  title="Close Dialog"
+                  variant="inverse"
+                  size="small"
+                  icon-name="utility:close"
+                ></lightning-icon>
+              </button>
+              <header class="slds-popover__header">
+                <div
+                  class="slds-media slds-media_center slds-has-flexi-truncate"
+                >
+                  <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-utility-error">
+                      <lightning-icon
+                        title="Error"
+                        variant="inverse"
+                        icon-name="utility:error"
+                        size="small"
+                      ></lightning-icon>
+                    </span>
+                  </div>
+                  <div class="slds-media__body">
+                    <h2
+                      class="slds-truncate slds-text-heading_medium"
+                      id="dialog-heading-id-1"
+                      title="We hit a snag."
+                    >
+                      We hit a snag.
+                    </h2>
+                  </div>
+                </div>
+              </header>
+              <div class="slds-popover__body" id="dialog-body-id-114">
+                <p>Please complete the fields.</p>
+              </div>
+            </section>
+          </div>
+          <lightning-button
+            variant="brand"
+            label="New Quote Save"
+            title="New Quote Save"
+            onclick={newQuoteHandleSave}
+            class="slds-m-left_x-small"
+          ></lightning-button>
+          <lightning-button
+            variant="brand-outline"
+            label="Cancel"
+            onclick={handleModalClose}
+            title="Cancel"
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </div>
+      </footer>
+    </div>
+  </template>
+</template>

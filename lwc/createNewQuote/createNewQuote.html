@@ -1,0 +1,110 @@
+<!---
+  @description       : CreateNewQuote Component is  used to Create New Quote from Opportunity Object 
+                      as same as Standard Way of creating new Quote
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Nitesh Lande - Salesforce Developer
+                     : Ankita Verma - Tech Assistant
+  @last modified on  : 02-22-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <div if:true={isLoaded}>
+    <lightning-spinner
+      alternative-text="Loading..."
+      size="large"
+    ></lightning-spinner>
+  </div>
+  <template if:true={displayerrormsg}>
+    <div class={demoClass}>
+      <div class="slds-notify_container slds-is-relative">
+        <div class="slds-notify" role="status">
+          <div
+            class="slds-grid slds-wrap slds-var-p-left_x-large slds-var-p-right_x-large"
+          >
+            <div class="slds-col slds-size_11-of-12 slds-float_left">
+              <h2 class="slds-text-heading_small error-message">
+                {errorMessage}
+              </h2>
+            </div>
+            <div class="slds-col slds-size_1-of-12">
+              <button class="close-button" title="Close" onclick={hideerrormsg}>
+                <lightning-icon
+                  icon-name="utility:close"
+                  alternative-text="close"
+                  variant="inverse"
+                  size="small"
+                ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={displaydata}>
+    <div if:false={isLoaded}>
+      <lightning-quick-action-panel header="New Quote">
+        <lightning-record-edit-form
+          object-api-name="SBQQ__Quote__c"
+          onsuccess={handleSuccess}
+          density="comfy"
+        >
+          <lightning-messages></lightning-messages>
+          <div class="slds-grid slds-wrap slds-p-around--medium form-container">
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+              <lightning-input-field
+                required
+                field-name="SBQQ__Account__c"
+                value={accountId}
+              ></lightning-input-field>
+              <lightning-input-field
+                required
+                field-name="SBQQ__Opportunity2__c"
+                value={oppId}
+              ></lightning-input-field>
+              <lightning-input-field
+                field-name="SBQQ__Primary__c"
+              ></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+              <lightning-input-field
+                field-name="SBQQ__StartDate__c"
+                value=""
+              ></lightning-input-field>
+              <lightning-input-field
+                field-name="SBQQ__EndDate__c"
+                value=""
+              ></lightning-input-field>
+              <lightning-input-field
+                field-name="SBQQ__SubscriptionTerm__c"
+                value=""
+              ></lightning-input-field>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid_align-end align-center">
+              <lightning-button
+              variant="brand"
+              class="save-button slds-m-right_small"
+              type="submit"
+              label="Save"
+              onclick={handleOnSave}
+            ></lightning-button>
+            <lightning-button
+              variant="neutral"
+              label="Cancel"
+              class="cancel-button"
+              onclick={handleCancel}
+            ></lightning-button>
+            </div>
+          </div>
+          
+        </lightning-record-edit-form>
+      </lightning-quick-action-panel>
+    </div>
+  </template>
+</template>

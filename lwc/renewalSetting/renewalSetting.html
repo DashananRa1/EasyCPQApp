@@ -1,0 +1,118 @@
+<!---
+  @description       : Renewal Settings Component where We Have added the Renewal Opportunity
+                       and Reneal Quote LWC Component as Tab
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Nitesh Lande - Salesforce Developer
+                     : Ankita Verma - Tech Assistant
+  @last modified on  : 02-22-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <template lwc:if={showModal}>
+    <lightning-tabset variant="Scoped">
+      <lightning-tab label="Renewal Quote Fields" icon-name="standard:quotes">
+        <c-renewal-quote-settings
+          quote-fields-list={quoteFieldsList}
+          account-fields-list={accountFieldsList}
+          opportunity-fields-list={opportunityFieldsList}
+          exclude-account-fields={excludeAccountFields}
+          exclude-opportunity-fields={excludeOpportunityFields}
+          exclude-quote-fields={excludeQuoteFields}
+          allowed-mappings={allowedMappings}
+        ></c-renewal-quote-settings>
+      </lightning-tab>
+      <lightning-tab
+        label="Renewal Opportunity Fields"
+        icon-name="standard:opportunity"
+      >
+        <c-renewal-opportunity-setting
+          quote-fields-list={quoteFieldsList}
+          account-fields-list={accountFieldsList}
+          opportunity-fields-list={opportunityFieldsList}
+          exclude-account-fields={excludeAccountFields}
+          exclude-opportunity-fields={excludeOpportunityFields}
+          exclude-quote-fields={excludeQuoteFields}
+          allowed-mappings={allowedMappings}
+        ></c-renewal-opportunity-setting>
+      </lightning-tab>
+    </lightning-tabset>
+    <div class="slds-p-top_medium">
+      <footer class="slds-modal__footer">
+        <div class="slds-align_absolute-right">
+          <div
+            class="slds-is-relative slds-col slds-size_5-of-12 slds-float_right"
+          >            
+            <section
+              if:true={hasError}
+              aria-describedby="dialog-body-id-114"
+              aria-labelledby="dialog-heading-id-1"
+              class="slds-popover slds-popover_error slds-nubbin_bottom additional"
+              role="dialog"
+            >
+              <button
+                onclick={closeErrorPopup}
+                class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close slds-button_icon-inverse"
+                title="Close dialog"
+              >
+                <lightning-icon
+                  title="Close Dialog"
+                  variant="inverse"
+                  size="small"
+                  icon-name="utility:close"
+                ></lightning-icon>
+              </button>
+              <header class="slds-popover__header">
+                <div
+                  class="slds-media slds-media_center slds-has-flexi-truncate"
+                >
+                  <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-utility-error">
+                      <lightning-icon
+                        title="Error"
+                        variant="inverse"
+                        icon-name="utility:error"
+                        size="small"
+                      ></lightning-icon>
+                    </span>
+                  </div>
+                  <div class="slds-media__body">
+                    <h2
+                      class="slds-truncate slds-text-heading_medium"
+                      id="dialog-heading-id-1"
+                      title="We hit a snag."
+                    >
+                      We hit a snag.
+                    </h2>
+                  </div>
+                </div>
+              </header>
+              <div class="slds-popover__body" id="dialog-body-id-114">
+                <p>Please complete the fields.</p>
+              </div>
+            </section>
+          </div>
+          <button
+            class="slds-button slds-button_brand"
+            type="submit"
+            onclick={handleSave}
+            title="Save"
+          >
+            Renewal Setting Save
+          </button>
+          <button
+            class="slds-button slds-button_neutral"
+            onclick={handleModalClose}
+            title="Cancel"
+          >
+            Cancel
+          </button>
+        </div>
+      </footer>
+    </div>
+  </template>
+</template>

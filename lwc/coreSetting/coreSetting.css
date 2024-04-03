@@ -1,0 +1,144 @@
+/* Style the footer */
+footer {
+  background-color: #fcfbfb;
+  padding: 0.5px;
+  text-align: right;
+  color: rgb(7, 7, 7);
+  position: relative; 
+}
+
+
+.shadow-section {
+  position: relative;
+  height: 190px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8)
+  );
+}
+
+
+.shadow-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
+  z-index: -1;
+}
+
+.field-and-help label:hover + .slds-form-element__help {
+  display: block;
+}
+
+.slds-form-element__help {
+  display: none;
+}
+
+.label-style {
+  font-size: 14px;
+  margin-right: 5px;
+  text-align: right;
+  width: 250px;
+  display: inline-block;
+}
+
+/* Styles for the date input */
+.date-input-style {
+  margin-left: 10px;
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: 3px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.resource-user-container {
+  display: flex; 
+  align-items: center; 
+}
+
+.resource-text {
+  margin-right: 5px; 
+  font-size: 14px;
+}
+
+.user-manual-link {
+  color: #0b0b0b;
+  font-size: 14px;
+  margin-left: 5px; 
+}
+
+.link-container {
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.source-link {
+  margin-top: 5px;
+  margin-left: 9.9rem; 
+}
+.slds-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+header {
+  margin-left: 80px;
+}
+
+/* Label Styles */
+.field-and-help label {
+  font-size: 14px;
+  margin-right: 5px;
+  text-align: right;
+  width: 300px;
+  display: inline-block;
+}
+
+/* Input Styles */
+.field-and-help input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: 3px;
+  display: inline-block;
+}
+
+/* Resource User Container Styles */
+.resource-user-container {
+  display: flex;
+  align-items: center;
+}
+
+.resource-text {
+  display: flex;
+  align-items: center;
+}
+
+.user-manual-link a {
+  text-decoration: none;
+  color: blue;
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.slds-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.user-manual-container {
+  align-items: center;
+  margin-right: 20px;
+}

@@ -1,0 +1,52 @@
+.error-popup {
+  position: absolute;
+  right: 1rem;
+  top: -6.3rem;
+  text-align: left;
+}
+
+.error-popup .close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.error-popup__header {
+  display: flex;
+  align-items: center;
+}
+
+.error-icon {
+  margin-right: 0.5rem;
+}
+.slds-p-top_medium {
+  padding-top: 1.5rem; 
+}
+.additional{
+      position: absolute;
+    right: -15%;
+    bottom: 50px;
+    text-align: left;
+}
+.slds-align_absolute-right {
+  display: flex;
+  align-items: flex-end;
+}
+
+.slds-is-relative {
+  position: relative;
+}
+
+.slds-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.slds-size_5-of-12 {
+  width: 41.66667%; 
+}
+
+.slds-float_right {
+  float: right;
+}

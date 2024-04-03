@@ -1,0 +1,91 @@
+<!---
+  @description       : Main Parent Component's html
+  @author            : Amit Aher - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Nitesh Lande - Salesforce Developer
+  @last modified on  : 12-13-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+  <lightning-card>
+    <div class="slds-page-header srss-page-header">
+      <h2 class="srss-page-sub-heading">Settings Editor</h2>
+      <div class="slds-text-heading_large srss-page-heading">RenewAmendPro</div>
+    </div>
+    <div class="slds-scrollable">
+      <lightning-tabset active-tab-value="one">
+        <lightning-tab
+          label="Core Settings"
+          icon-name="standard:settings"
+          value="one"
+        >
+          <c-core-setting
+            quote-fields={pickListOptionsQuote}
+            account-fields={pickListOptionsAccount}
+            opportunity-fields={pickListOptionsOpp}
+          ></c-core-setting>
+        </lightning-tab>
+        <lightning-tab
+          label="New Quote Field Setup"
+          icon-name="standard:merge"
+          value="two"
+        >
+          <c-new-quote-copy
+            quote-fields-list={pickListOptionsQuote}
+            account-fields-list={pickListOptionsAccount}
+            opportunity-fields-list={pickListOptionsOpp}
+            exclude-account-fields={excludeAccountFields}
+            exclude-opportunity-fields={excludeOpportunityFields}
+            exclude-quote-fields={excludeQuoteFields}
+            allowed-mappings={allowedMappings}
+          ></c-new-quote-copy>
+        </lightning-tab>
+        <lightning-tab
+          label="Renewal Settings"
+          icon-name="standard:crypto_transaction_envelope_item"
+          value="three"
+        >
+          <c-renewal-setting
+            quote-fields-list={pickListOptionsQuote}
+            account-fields-list={pickListOptionsAccount}
+            opportunity-fields-list={pickListOptionsOpp}
+            exclude-account-fields={excludeAccountFields}
+            exclude-opportunity-fields={excludeOpportunityFields}
+            exclude-quote-fields={excludeQuoteFields}
+            allowed-mappings={allowedMappings}
+          ></c-renewal-setting>
+        </lightning-tab>
+        <lightning-tab
+          label="Amend Settings"
+          icon-name="standard:service_contract"
+          value="four"
+        >
+          <c-amend-setting
+            quote-fields-list={pickListOptionsQuote}
+            account-fields-list={pickListOptionsAccount}
+            opportunity-fields-list={pickListOptionsOpp}
+            exclude-account-fields={excludeAccountFields}
+            exclude-opportunity-fields={excludeOpportunityFields}
+            exclude-quote-fields={excludeQuoteFields}
+            allowed-mappings={allowedMappings}
+          ></c-amend-setting>
+        </lightning-tab>
+      </lightning-tabset>
+    </div>
+    <div class="custom-page-header custom-srss-page-header">
+      <p class="custom-srss-page-sub-heading">
+        Powered by <img class="bluvium-logo" src={bluviumBLogoUrl} /><a
+          href={webSiteUrl.WEBSITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bluvium-link"
+          >Bluvium</a
+        >
+      </p>
+    </div>
+  </lightning-card>
+</template>

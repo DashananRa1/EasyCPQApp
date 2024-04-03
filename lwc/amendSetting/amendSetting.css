@@ -1,0 +1,32 @@
+.slds-p-top_medium {
+  padding-top: 1.5rem; /* Adjust as needed */
+}
+.additional {
+  position: absolute;
+  right: -15%;
+  bottom: 50px;
+  text-align: left;
+}
+
+.slds-align_absolute-right {
+  display: flex;
+  align-items: flex-end;
+}
+
+.slds-is-relative {
+  position: relative;
+}
+
+.slds-col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.slds-size_5-of-12 {
+  width: 41.66667%; /* Adjust as needed */
+}
+
+.slds-float_right {
+  float: right;
+}
