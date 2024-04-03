@@ -72,9 +72,9 @@ public with sharing class CreateAmendLWC {
     String quoteJSON;
     AmendContext context = new AmendContext();
     try {      
-      BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
-      Boolean newAmendOpportunity = appConfig.BECPQ__Generate_New_Amendment_Opportunity__c;
-      Boolean mainQlGroup = appConfig.BECPQ__Maintain_QuoteLine_Groups_for_Amendment__c;       
+      App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName('Default');
+      Boolean newAmendOpportunity = appConfig.Generate_New_Amendment_Opportunity__c;
+      Boolean mainQlGroup = appConfig.Maintain_QuoteLine_Groups_for_Amendment__c;       
       Integer contractCount = [SELECT COUNT() FROM Contract WHERE SBQQ__Opportunity__c =:opportunityId WITH SECURITY_ENFORCED];        
         if (contractCount > 0 && !newAmendOpportunity) {
           system.debug('Execute only if the Checkbox false and opportunity is Ordered');
@@ -105,12 +105,12 @@ public with sharing class CreateAmendLWC {
         LIMIT 1
       ];
       // for Amend Quote Setting Quote Field (Querying Data From Custom metadata)
-      string opportunityFields = appConfig.BECPQ__AmendQuote_OriginalOppFieldSetup__c;
-      string accountFields = appConfig.BECPQ__AmendQuote_AccountFieldSetup__c;
-      string originalQuoetFields = appConfig.BECPQ__AmendQuote_OriginalQuoteFieldSetup__c;
+      string opportunityFields = appConfig.AmendQuote_OriginalOppFieldSetup__c;
+      string accountFields = appConfig.AmendQuote_AccountFieldSetup__c;
+      string originalQuoetFields = appConfig.AmendQuote_OriginalQuoteFieldSetup__c;
       // for Amend Opportunity Setting Quote Field (Querying Data From Custom metadata)
-      string originalOpptoAmendOppFieldsMapping = appConfig.BECPQ__AmendOpportunity_OriginalOppFieldSetup__c;
-      string accountToAmmendOpportunityFieldsMapping = appConfig.BECPQ__AmendOpportunity_AccountFieldSetup__c;
+      string originalOpptoAmendOppFieldsMapping = appConfig.AmendOpportunity_OriginalOppFieldSetup__c;
+      string accountToAmmendOpportunityFieldsMapping = appConfig.AmendOpportunity_AccountFieldSetup__c;
       // Ammend Quote Setting
       set<string> originalOpportunityFieldSet = new Set<string>();
       set<string> accountFieldSet = new Set<string>();
@@ -358,7 +358,7 @@ public with sharing class CreateAmendLWC {
         }
         if(Test.isRunningTest()){
             IF(newAmendOpportunity){
-            	appConfig.BECPQ__Generate_New_Amendment_Opportunity__c = false;
+            	appConfig.Generate_New_Amendment_Opportunity__c = false;
         	} 
         } 
       if (!newAmendOpportunity) {
