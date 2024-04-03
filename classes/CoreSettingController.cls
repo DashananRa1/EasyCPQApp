@@ -20,7 +20,7 @@ public with sharing class CoreSettingController {
     * @return: List<String> 
     **/
     @AuraEnabled(cacheable=true)
-    public static BECPQ__App_Configuration__mdt getAddittionSettingDataFromMetadata(String recordName) {    
+    public static App_Configuration__mdt getAddittionSettingDataFromMetadata(String recordName) {    
         return EasyCpqUtils.getAdditionalSettingFieldsSetup();
     }
     /**
