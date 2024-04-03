@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <label>Default</label>
+    <values>
+    <label>Default</label>
+</values>
     <protected>false</protected>
     <values>
         <field>AmendOpportunity_AccountFieldSetup__c</field>
@@ -49,10 +52,6 @@
     <values>
         <field>New_Quote_Fields_Setup__c</field>
         <value xsi:type="xsd:string">[{&quot;index&quot;:1,&quot;objectName&quot;:&quot;Account&quot;,&quot;sourcefield&quot;:&quot;BECPQ__ReferralCode__c&quot;,&quot;targetfield&quot;:&quot;AccountNumber&quot;,&quot;datatype&quot;:&quot;String&quot;,&quot;label&quot;:&quot;Referral Code&quot;,&quot;value&quot;:&quot;BECPQ__ReferralCode__c&quot;,&quot;targetdatatype&quot;:&quot;String&quot;,&quot;targetlabel&quot;:&quot;Account Number&quot;,&quot;targetvalue&quot;:&quot;AccountNumber&quot;,&quot;targetname&quot;:&quot;Account Number&quot;},{&quot;index&quot;:1,&quot;targetfield&quot;:&quot;Description&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Introduction__c&quot;,&quot;objectName&quot;:&quot;OriginalOpportunity&quot;},{&quot;index&quot;:1,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Notes__c&quot;,&quot;targetfield&quot;:&quot;Notes is Set from UI Configuration page&quot;,&quot;datatype&quot;:&quot;TextArea&quot;,&quot;label&quot;:&quot;Notes&quot;,&quot;value&quot;:&quot;SBQQ__Notes__c&quot;},{&quot;index&quot;:2,&quot;objectName&quot;:&quot;OriginalQuote&quot;,&quot;sourcefield&quot;:&quot;SBQQ__Status__c&quot;,&quot;targetfield&quot;:&quot;In Review&quot;,&quot;selctedfield&quot;:&quot;&quot;,&quot;datatype&quot;:&quot;Picklist&quot;,&quot;label&quot;:&quot;Status&quot;,&quot;value&quot;:&quot;SBQQ__Status__c&quot;}]</value>
-    </values>
-    <values>
-        <field>Quote_Stage__c</field>
-        <value xsi:type="xsd:string">Approved</value>
     </values>
     <values>
         <field>RenewalOpportunity_AccountFieldSetup__c</field>
