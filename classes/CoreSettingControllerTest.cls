@@ -10,9 +10,9 @@ public static boolean nullCheck = false;
     @isTest
     private static void testGetCheckboxFields(){
        // Positive Test: Test when App_Configuration__mdt record exists
-        BECPQ__App_Configuration__mdt appConfig = TestDataFactory.getCustomMetadataRecord();
+        App_Configuration__mdt appConfig = TestDataFactory.getCustomMetadataRecord();
         Test.startTest();
-        BECPQ__App_Configuration__mdt result = CoreSettingController.getAddittionSettingDataFromMetadata('Default');
+        App_Configuration__mdt result = CoreSettingController.getAddittionSettingDataFromMetadata('Default');
         Test.stopTest();
         System.assertEquals(true, true,'');  
         
