@@ -28,27 +28,26 @@ public with sharing class EasyCpqQueries {
     List<BECPQ__App_Configuration__mdt> appCon = [
       SELECT
         Id,
-        BECPQ__New_Quote_Fields_Setup__c,
-        BECPQ__Auto_Select_Master_Contract__c,
-        BECPQ__Generate_New_Amendment_Opportunity__c,
-        BECPQ__Generate_New_Renewal_Opportunity__c,
-        BECPQ__Maintain_QuoteLine_Groups__c,
-        BECPQ__Quote_Stage__c,
-        BECPQ__RenewalQuote_AccountFieldSetup__c,
-        BECPQ__RenewalQuote_OriginalOppFieldSetup__c,
-        BECPQ__RenewalQuote_OriginalQuoteFieldSetup__c,
-        BECPQ__RenewalOpportunity_AccountFieldSetup__c,
-        BECPQ__RenewalOpportunity_OriginalOppFieldSetup__c,
-        BECPQ__AmendQuote_AccountFieldSetup__c,
-        BECPQ__AmendQuote_OriginalQuoteFieldSetup__c,
-        BECPQ__AmendQuote_OriginalOppFieldSetup__c,
-        BECPQ__AmendOpportunity_AccountFieldSetup__c,
-        BECPQ__AmendOpportunity_OriginalOppFieldSetup__c,
+        New_Quote_Fields_Setup__c,
+        Auto_Select_Master_Contract__c,
+        Generate_New_Amendment_Opportunity__c,
+        Generate_New_Renewal_Opportunity__c,
+        Maintain_QuoteLine_Groups__c,
+        RenewalQuote_AccountFieldSetup__c,
+        RenewalQuote_OriginalOppFieldSetup__c,
+        RenewalQuote_OriginalQuoteFieldSetup__c,
+        RenewalOpportunity_AccountFieldSetup__c,
+        RenewalOpportunity_OriginalOppFieldSetup__c,
+        AmendQuote_AccountFieldSetup__c,
+        AmendQuote_OriginalQuoteFieldSetup__c,
+        AmendQuote_OriginalOppFieldSetup__c,
+        AmendOpportunity_AccountFieldSetup__c,
+        AmendOpportunity_OriginalOppFieldSetup__c,
         DeveloperName,
         MasterLabel,
-        BECPQ__Maintain_QuoteLine_Groups_for_renewal__c,
-        BECPQ__Maintain_QuoteLine_Groups_for_Amendment__c
-      FROM BECPQ__App_Configuration__mdt
+        Maintain_QuoteLine_Groups_for_renewal__c,
+        Maintain_QuoteLine_Groups_for_Amendment__c
+      FROM App_Configuration__mdt
       WHERE DeveloperName = :String.escapeSingleQuotes(recordName)
       WITH SECURITY_ENFORCED
     ]; //QualifiedApiName
