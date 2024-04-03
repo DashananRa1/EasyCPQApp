@@ -33,19 +33,19 @@ public class NewQuoteSettingControllerTest {
   private static void getNewQuoteFieldsNullCheckTest() {
     Test.startTest();
     nullCheck = true;
-    BECPQ__App_Configuration__mdt appConfig = new BECPQ__App_Configuration__mdt();
+    App_Configuration__mdt appConfig = new App_Configuration__mdt();
     List<Object> data = NewQuoteSettingController.getQuoteFields();
     Test.stopTest();
     System.assertEquals(data.size(), data.size(), 'Expected size of 0');
   }
   @isTest
   private static void getNewQuoteFieldsIsBlankTest() {
-    BECPQ__App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName(
+    App_Configuration__mdt appConfig = EasyCpqQueries.getAppConfigByRecordName(
       'Default'
     );
     Test.startTest();
     nullCheck = true;
-    appConfig.BECPQ__New_Quote_Fields_Setup__c = '';
+    appConfig.New_Quote_Fields_Setup__c = '';
     EasyCpqQueries.getAppConfigByRecordName('Default');
     List<Object> data = NewQuoteSettingController.getQuoteFields();
     Test.stopTest();
@@ -255,7 +255,7 @@ public class NewQuoteSettingControllerTest {
     EasyCpqUtils.setNewQuoteFieldsSetup(JSON.serialize(jsonMap));
     Test.stopTest();
     // Retrieve the App_Configuration__mdt instance
-    BECPQ__App_Configuration__mdt config = EasyCpqUtils.getAdditionalSettingFieldsSetup();
+    App_Configuration__mdt config = EasyCpqUtils.getAdditionalSettingFieldsSetup();
     // Perform your assertion
     System.assertEquals(
       true,
