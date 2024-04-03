@@ -1,0 +1,130 @@
+<!---
+  @description       : Core Settings Component where we can configure 
+                      Checkboxes for different Process like Amend and Renewal
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Ankita Varma - Tech Assistant
+  @last modified on  : 02-22-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <header>
+    <lightning-card if:true={appConfig}>
+      <lightning-layout multiple-rows>
+        <!-- Checkbox 1 -->
+        <lightning-layout-item size="6">
+          <div class="slds-size_1-of-1 slds-medium-size">
+            <div class="field-and-help">
+              <label>Auto Select Master Contract for Renewal</label>
+              <input
+                type="checkbox"
+                checked={isAutoSelectMasterContract}
+                onchange={handleAutoSelectMasterContractChange}
+              />
+            </div>
+            <div class="slds-form-element__help">
+              This option allows the automatic selection of the master contract.
+            </div>
+          </div>
+        </lightning-layout-item>
+
+        <!-- Checkbox 2 -->
+        <lightning-layout-item size="6">
+          <div class="slds-size_1-of-1 slds-medium-size">
+            <div class="field-and-help">
+              <label>Always Generate New Amendment Opportunity</label>
+              <input
+                type="checkbox"
+                checked={isGenerateNewAmendmentOpportunity}
+                onchange={handleGenerateNewAmendmentOpportunityChange}
+              />
+            </div>
+            <div class="slds-form-element__help">
+              This option allows you to Generate New Amendment Opportunity.
+            </div>
+          </div>
+        </lightning-layout-item>
+
+        <!-- Checkbox 3 -->
+        <lightning-layout-item size="6">
+          <div class="slds-size_1-of-1 slds-medium-size">
+            <div class="field-and-help">
+              <label>Generate New Renewal Opportunity</label>
+              <input
+                type="checkbox"
+                checked={isGenerateNewRenewalOpportunity}
+                onchange={handleGenerateNewRenewalOpportunityChange}
+              />
+            </div>
+            <div class="slds-form-element__help">
+              This option allows to Generate New Renewal Opportunity.
+            </div>
+          </div>
+        </lightning-layout-item>        
+        <lightning-layout-item size="6">
+          <div class="slds-size_1-of-1 slds-medium-size">
+            <div class="field-and-help">
+              <label>Maintain QuoteLine Groups for Amendment</label>
+              <input
+                type="checkbox"
+                checked={isMaintainQuoteLineGroupForAmendment}
+                onchange={handleMaintainQuoteLineGroupForAmendment}
+              />
+            </div>
+            <div class="slds-form-element__help">
+              This option allows to Maintain QuoteLine Groups.
+            </div>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6">
+          <div class="slds-size_1-of-1 slds-medium-size">
+            <div class="field-and-help">
+              <label>Maintain QuoteLine Groups for Renewal</label>
+              <input
+                type="checkbox"
+                checked={isMaintainQuoteLineGroupForRenewal}
+                onchange={handleMaintainQuoteLineGroupForRenewal}
+              />
+            </div>
+            <div class="slds-form-element__help">
+              This option allows to Maintain QuoteLine Groups.
+            </div>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6"></lightning-layout-item>
+        <lightning-layout-item size="3">
+          <div class="slds-grid slds-grid_align-end user-manual-container">
+            <!--resource-user-container-->
+            <div class="resource-text">
+              <lightning-icon
+                class="slds-m-right_x-small"
+                icon-name="standard:article"
+                size="small"
+                alternative-text="Source Icon"
+              ></lightning-icon>
+              Resource -
+            </div>
+            <div class="user-manual-link">
+              <a href={URL.UserManualURL} target="_blank">User Manual</a>
+            </div>
+          </div>
+        </lightning-layout-item>
+
+        <!-- Checkbox 3 -->
+      </lightning-layout>
+    </lightning-card>
+  </header>
+  <footer class="slds-modal__footer">
+    <div class="slds-p-around_small">
+      <lightning-button
+        label="Save"
+        onclick={updateCheckboxFieldValues}
+        variant="brand"
+      ></lightning-button>
+    </div>
+  </footer>
+</template>

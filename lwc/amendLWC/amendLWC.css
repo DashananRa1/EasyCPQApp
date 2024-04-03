@@ -1,0 +1,37 @@
+.error-container {
+  height: 3rem;
+  margin-top: 20px !important;
+}
+
+.error-content {
+  margin-top: 0px;
+}
+
+.error-text {
+  width: 91.66666667%;
+  float: left;
+}
+
+.error-close {
+  width: 8.33333333%;
+  float: left;
+  text-align: right;
+}
+
+.error-message {
+  color: red;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  margin-top: 1rem;
+}
+
+.no-contracts-text {
+  text-align: center;
+  font-weight: bold;
+}

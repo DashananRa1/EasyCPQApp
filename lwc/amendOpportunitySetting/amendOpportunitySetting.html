@@ -1,0 +1,178 @@
+<!---
+  @description       : amendOpportunitySetting Component is  used to Mapping the Fields of Account 
+  						and Opportunity from UI to Custom MetaData to get Populated on Amend Opportunity
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Nitesh Lande - Salesforce Developer
+                     : Ankita Varma - Tech Assistant
+  @last modified on  : 02-22-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <div lwc:if={showSpinner}>
+    <lightning-spinner
+      alternative-text="Loading..."
+      variant="brand"
+    ></lightning-spinner>
+  </div>
+  <lightning-tabset variant="scoped">
+    <lightning-tab label="Account" icon-name="standard:account">
+      <section>
+        <div>
+          <div lwc:if={accountFields}>
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Amend Opportunity Field</th>
+                  <th>Account Field</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={accountFields} for:item="fld">
+                  <tr key={fld.index}>
+                    <td>{fld.index}</td>
+                    <td>
+                      <lightning-combobox
+                        variant="label-hidden"
+                        data-field-index={fld.index}
+                        data-field-type={fld.datatype}
+                        data-field-rel="source"
+                        data-object-name="Account"
+                        value={fld.sourcefield}
+                        placeholder="Select a Opportunity Field"
+                        options={oppFieldData}
+                        onchange={handleChangeOpportunity}
+                      ></lightning-combobox>
+                    </td>
+                    <td>
+                      <lightning-combobox
+                        variant="label-hidden"
+                        data-id="accountFieldInput"
+                        data-field-index={fld.index}
+                        data-field-rel="target"
+                        data-object-name="Account"
+                        value={fld.targetfield}
+                        placeholder="Select a Account Field"
+                        options={accountFieldData}
+                        onchange={handleChangeOpportunity}
+                      ></lightning-combobox>
+                    </td>
+                    <td>
+                      <a href="#">
+                        <lightning-icon
+                          icon-name="utility:delete"
+                          size="small"
+                          alternative-text="Delete"
+                          title="Remove field"
+                          variant="error"
+                          class="delete-icon"
+                          onclick={handleRemoveFieldForAccount}
+                          data-field-index={fld.index}
+                          data-object-name="Account"
+                        ></lightning-icon>
+                        <span class="slds-assistive-text">Delete</span>
+                      </a>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <lightning-button
+              label="Add New Field"
+              title="Click to add new field"
+              icon-name="utility:add"
+              onclick={handleNewFieldForAccount}
+            ></lightning-button>
+          </div>
+        </div>
+      </section>
+    </lightning-tab>
+
+    <lightning-tab
+      label="Original Opportunity"
+      icon-name="standard:opportunity"
+    >
+      <section>
+        <div>
+          <div lwc:if={originalOpportunityField}>
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Sr. No</th>
+                  <th>Amend Opportunity Field</th>
+                  <th>Original Opportunity Field</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template for:each={originalOpportunityField} for:item="fld">
+                  <tr key={fld.index}>
+                    <td>{fld.index}</td>
+                    <td>
+                      <lightning-combobox
+                        variant="label-hidden"
+                        data-field-index={fld.index}
+                        data-field-rel="source"
+                        data-field-datatype={fld.dataType}
+                        data-object-name="OriginalOpportunity"
+                        value={fld.sourcefield}
+                        placeholder="Select a Opportunity Field"
+                        options={oppFieldData}
+                        onchange={handleChangeOpportunity}
+                      ></lightning-combobox>
+                    </td>
+                    <td>
+                      <lightning-combobox
+                        variant="label-hidden"
+                        data-id="opportunityFieldInput"
+                        data-field-index={fld.index}
+                        data-object-name="OriginalOpportunity"
+                        value={fld.targetfield}
+                        data-field-rel="target"
+                        placeholder="Select a Original Opportunity Field"
+                        options={oppFieldData}
+                        onchange={handleChangeOpportunity}
+                      ></lightning-combobox>
+                    </td>
+                    <td>
+                      <a href="#">
+                        <lightning-icon
+                          icon-name="utility:delete"
+                          size="small"
+                          alternative-text="Delete"
+                          title="Remove field"
+                          class="delete-icon"
+                          onclick={handleRemoveFieldForOpportunity}
+                          data-field-index={fld.index}
+                          data-object-name="OriginalOpportunity"
+                          variant="error"
+                        ></lightning-icon>
+                        <span class="slds-assistive-text">Delete</span>
+                      </a>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <lightning-button
+              label="Add New Field"
+              title="Click to add new field"
+              icon-name="utility:add"
+              onclick={handleNewFieldForOpportunity}
+            ></lightning-button>
+          </div>
+        </div>
+      </section>
+    </lightning-tab>
+  </lightning-tabset>
+</template>

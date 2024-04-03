@@ -1,0 +1,157 @@
+<!---
+  @description       : RenewalLWC Component is  used to Create New Renewal Quote from Opportunity Object 
+                      as same as Standard Way of creating new Renewal Contract
+  @author            : Roshan Jambhule - Bluvium
+  @group             : Ashwini Singh - Sr.Solution Architect
+                     : Rahul Deshmukh - Business Analyst
+                     : Kavita Kore - Technical Lead
+                     : Amit Aher - Sr.Salesforce Developer
+                     : Roshan Jambhule - Salesforce Developer
+                     : Nitesh Lande - Salesforce Developer
+                     : Ankita Verma - Tech Assistant
+  @last modified on  : 03-01-2024
+  @last modified by  : Roshan Jambhule - Bluvium
+-->
+<template>
+  <template if:true={isLoading}>
+    <div>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="large"
+        variant="brand"
+      ></lightning-spinner>
+    </div>
+  </template>
+  <template if:true={displayerrormsg}>
+    <div class="error-message-container">
+      <div class="slds-notify_container slds-is-relative">
+        <div class="slds-notify" role="status">
+          <div class="slds-grid slds-wrap error-message">
+            <div class="slds-col slds-size_11-of-12 slds-float_left">
+              <h2 class="slds-text-heading_small error-text">{errorMessage}</h2>
+            </div>
+            <div class="slds-col slds-size_1-of-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={displayactivecontracts}>
+    <lightning-card title={title}>
+      <template if:true={columns}>
+        <lightning-datatable
+          key-field="Id"
+          data={data}
+          columns={columns}
+          selected-rows={preSelectedRows}
+          onclick={handleChangeCheckbox}
+        >
+        </lightning-datatable>
+      </template>      
+      <footer class="footer-container">
+        <div class="button-container">
+          <lightning-button
+            class="renew-button"
+            variant="brand"
+            label="Renew Contract"
+            onclick={submitDetails}
+          >
+          </lightning-button>
+          <lightning-button
+            variant="neutral"
+            label="Cancel"
+            onclick={closeModal}
+          >
+          </lightning-button>
+        </div>
+      </footer>
+    </lightning-card>
+  </template>
+  <template if:true={noActiveContractFound}>
+    <lightning-card title={title}>
+      <footer class="modal-footer">
+        <h1 class="no-contracts-text">No Active Contracts to Renew!</h1>
+      </footer>
+    </lightning-card>
+  </template>
+
+  <template if:true={isModalOpen}>
+    <div>
+      <template if:true={isLoading}>
+        <div>
+          <lightning-spinner
+            alternative-text="Loading"
+            size="large"
+            variant="brand"
+          ></lightning-spinner>
+        </div>
+      </template>
+      <div>
+        <header class="slds-modal__header">
+          <lightning-button
+            class="slds-modal__close"
+            variant="icon"
+            alternative-text="Close"
+            icon-name="utility:Close"
+            title="Close"
+            onclick={cancelDetails}
+          ></lightning-button>
+          <h2
+            id="modal-heading-01"
+            class="slds-text-heading_medium slds-hyphenate"
+          >
+            Select Master Contract
+          </h2>
+          <template if:true={displayerrormsg}>
+            <div class="error-message-container">
+              <div class="slds-notify_container slds-is-relative">
+                <div class="slds-notify" role="status">
+                  <div class="slds-grid slds-wrap error-message">
+                    <div class="slds-col slds-size_2-of-12"></div>
+                    <div
+                      class="slds-col slds-size_2-of-12 slds-float_right"
+                    ></div>
+                    <div class="slds-col slds-size_4-of-12 slds-float_left">
+                      <h2 class="slds-text-heading_small error-text">
+                        {errorMessage}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </header>
+        <div class="slds-p-around_medium" id="modal-content-id-1">
+          <template if:true={columns}>
+            <lightning-datatable
+              key-field="id"
+              data={selectedcontracts}
+              columns={columns}
+              max-row-selection="1"
+            >
+            </lightning-datatable>
+          </template>
+          <footer class="slds-modal__footer">
+            <div class="slds-align_absolute-center">
+              <lightning-button
+                class="renew-button"
+                variant="brand"
+                type="submit"
+                onclick={submitMasterContractDetails}
+                title="Renew"
+                label="Renew"
+              ></lightning-button>
+
+              <lightning-button
+                onclick={cancelDetails}
+                title="Cancel"
+                label="Cancel"
+              ></lightning-button>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>
